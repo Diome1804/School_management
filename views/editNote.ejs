@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modifier une note</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <h2 class="mt-5 mb-3">Modifier une note</h2>
+    <form method="POST" action="/notes/<%= note.id %>/modifier">
+        <div class="form-group">
+            <label for="etudiantId">Étudiant:</label>
+            <select class="form-control" id="etudiantId" name="etudiantId" required>
+                <% etudiants.forEach(function(etudiant) { %>
+                    <option value="<%= etudiant.mat_Etudiant %>" <%= note.etudiantId === etudiant.mat_Etudiant ? 'selected' : '' %>><%= etudiant.nom %> <%= etudiant.prenom %></option>
+                <% }); %>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="coursId">Cours:</label>
+            <select class="form-control" id="coursId" name="coursId" required>
+                <% cours.forEach(function(cours) { %>
+                    <option value="<%= cours.id %>" <%= note.coursId === cours.id ? 'selected' : '' %>><%= cours.nom %></option>
+                <% }); %>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="valeur">Valeur:</label>
+            <input type="number" class="form-control" id="valeur" name="valeur" step="0.1" value="<%= note.valeur %>" required>
+        </div>
+        <div class="form-group">
+            <label for="appreciation">Appréciation:</label>
+            <input type="text" class="form-control" id="appreciation" name="appreciation" value="<%= note.appreciation %>" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Modifier</button>
+    </form>
+</div>
+</body>
+</html>

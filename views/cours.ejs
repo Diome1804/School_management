@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liste des cours</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <h2 class="mt-5 mb-3">Liste des cours</h2>
+    <a href="/cours/ajouter" class="btn btn-primary mb-3">Ajouter un cours</a>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Titre</th>
+            <th>Description</th>
+            <th>Time</th>
+            <th>Filière</th>
+            <th>Professeur</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% cours.forEach(function(cours) { %>
+            <tr>
+                <td><%= cours.titre %></td>
+                <td><%= cours.description %></td>
+                <td><%= cours.time %></td>
+                <td><%= cours.filiereId %></td>
+                <td><%= cours.professeurId %></td>
+                <td>
+                    <a href="/cours/<%= cours.id %>/modifier" class="btn btn-warning btn-sm">Modifier</a>
+                    <form action="/cours/<%= cours.id %>/supprimer" method="POST" style="display:inline;">
+                        <button type="submit" class="btn btn-danger btn-sm">Supprimer</button>
+                    </form>
+                </td>
+            </tr>
+        <% }); %>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

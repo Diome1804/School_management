@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liste des professeurs</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <h2 class="mt-5 mb-3">Liste des professeurs</h2>
+    <a href="/professeur/ajouter" class="btn btn-primary mb-3">Ajouter un professeur</a>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Nom</th>
+            <th>Prénom</th>
+            <th>Spécialité</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% professeur.forEach(function(professeur) { %>
+            <tr>
+                <td><%= professeur.nom %></td>
+                <td><%= professeur.prenom %></td>
+                <td><%= professeur.specialite %></td>
+                <td>
+                    <a href="/professeur/<%= professeur.id %>/modifier" class="btn btn-warning btn-sm">Modifier</a>
+                    <form action="/professeur/<%= professeur.id %>/supprimer" method="POST" style="display:inline;">
+                        <button type="submit" class="btn btn-danger btn-sm">Supprimer</button>
+                    </form>
+                </td>
+            </tr>
+        <% }); %>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

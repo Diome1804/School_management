@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liste des notes</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <h2 class="mt-5 mb-3">Liste des notes</h2>
+    <a href="/notes/ajouter" class="btn btn-primary mb-3">Ajouter une note</a>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Étudiant</th>
+            <th>Cours</th>
+            <th>Valeur</th>
+            <th>Appréciation</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% notes.forEach(function(note) { %>
+            <tr>
+                <td><%= note.etudiantId %></td>
+                <td><%= note.coursId %></td>
+                <td><%= note.valeur %></td>
+                <td><%= note.appreciation %></td>
+                <td>
+                    <a href="/notes/<%= note.id %>/modifier" class="btn btn-warning btn-sm">Modifier</a>
+                    <form action="/notes/<%= note.id %>/supprimer" method="POST" style="display:inline;">
+                        <button type="submit" class="btn btn-danger btn-sm">Supprimer</button>
+                    </form>
+                </td>
+            </tr>
+        <% }); %>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

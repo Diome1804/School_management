@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liste des filières</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <h2 class="mt-5 mb-3">Liste des filières</h2>
+    <a href="/filieres/ajouter" class="btn btn-primary mb-3">Ajouter une filière</a>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Nom</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% filieres.forEach(function(filiere) { %>
+            <tr>
+                <td><%= filiere.nom %></td>
+                <td>
+                    <a href="/filieres/<%= filiere.id %>/modifier" class="btn btn-warning btn-sm">Modifier</a>
+                    <form action="/filieres/<%= filiere.id %>/supprimer" method="POST" style="display:inline;">
+                        <button type="submit" class="btn btn-danger btn-sm">Supprimer</button>
+                    </form>
+                </td>
+            </tr>
+        <% }); %>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajouter une note</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <h2 class="mt-5 mb-3">Ajouter une note</h2>
+    <form method="POST" action="/notes/ajouter">
+        <div class="form-group">
+            <label for="etudiantId">Étudiant:</label>
+            <select class="form-control" id="etudiantId" name="etudiantId" required>
+                <% etudiants.forEach(function(etudiant) { %>
+                    <option value="<%= etudiant.mat_Etudiant %>"><%= etudiant.nom %> <%= etudiant.prenom %></option>
+                <% }); %>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="coursId">Cours:</label>
+            <select class="form-control" id="coursId" name="coursId" required>
+                <% cours.forEach(function(cours) { %>
+                    <option value="<%= cours.id %>"><%= cours.nom %></option>
+                <% }); %>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="valeur">Valeur:</label>
+            <input type="number" class="form-control" id="valeur" name="valeur" step="0.1" required>
+        </div>
+        <div class="form-group">
+            <label for="appreciation">Appréciation:</label>
+            <input type="text" class="form-control" id="appreciation" name="appreciation" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Ajouter</button>
+    </form>
+</div>
+</body>
+</html>
